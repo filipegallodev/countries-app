@@ -12,4 +12,4 @@ yarn dev
 pnpm dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) em seu navegador.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
