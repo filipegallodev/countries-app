@@ -1,8 +1,9 @@
 import React from "react";
 import CountryCard from "./CountryCard";
 import { getCountries } from "@/scripts/fetchData";
+import styled from "styled-components";
 
-const maxShow = 6;
+const maxShow = 4;
 const Countries = () => {
   const [countries, setCountries] = React.useState<Country[]>();
   const [maxShowCountries, setMaxShowCountries] = React.useState(maxShow);
@@ -31,25 +32,37 @@ const Countries = () => {
   React.useEffect(() => {
     async function fetchData() {
       const data = await getCountries();
-      handleCountriesToShow(data);
+      return handleCountriesToShow(data);
     }
     fetchData();
   }, [maxShowCountries, handleCountriesToShow]);
 
   return (
     <>
-      <button onClick={() => setMaxShowCountries(maxShowCountries + maxShow)}>
-        More {maxShow} countries
-      </button>
       {countries && (
-        <ul>
+        <CardList>
           {countries.map((country) => (
             <CountryCard key={country.name.official} country={country} />
           ))}
-        </ul>
+        </CardList>
       )}
+      <button onClick={() => setMaxShowCountries(maxShowCountries + maxShow)}>
+        More {maxShow} countries
+      </button>
     </>
   );
 };
+
+const CardList = styled.ul`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+`;
 
 export default Countries;
