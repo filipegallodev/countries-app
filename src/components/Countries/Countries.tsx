@@ -38,7 +38,7 @@ const Countries = () => {
   }, [maxShowCountries, handleCountriesToShow]);
 
   return (
-    <>
+    <SectionContainer>
       {countries && (
         <CardList>
           {countries.map((country) => (
@@ -46,16 +46,22 @@ const Countries = () => {
           ))}
         </CardList>
       )}
-      <button onClick={() => setMaxShowCountries(maxShowCountries + maxShow)}>
+      <LoadMore onClick={() => setMaxShowCountries(maxShowCountries + maxShow)}>
         More {maxShow} countries
-      </button>
-    </>
+      </LoadMore>
+    </SectionContainer>
   );
 };
 
+const SectionContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const CardList = styled.ul`
   max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
@@ -63,6 +69,20 @@ const CardList = styled.ul`
   flex-wrap: wrap;
   gap: 16px;
   list-style: none;
+`;
+
+const LoadMore = styled.button`
+  margin: 72px;
+  font-size: 1.35rem;
+  padding: 16px;
+  background-color: #afa;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: #5f5;
+  }
 `;
 
 export default Countries;
