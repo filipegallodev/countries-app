@@ -72,7 +72,7 @@ const CardList = styled.ul`
 `;
 
 const LoadMore = styled.button`
-  margin: 72px;
+  margin: 64px;
   font-size: 1.35rem;
   padding: 16px;
   background-color: #afa;

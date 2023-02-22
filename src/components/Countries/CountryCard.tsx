@@ -31,7 +31,7 @@ const Card = styled.div`
   border: 2px solid #afa;
   border-radius: 16px;
   padding: 16px;
-  background-color: #eee;
+  background-color: #ddd;
 `;
 
 const Image = styled.img`
